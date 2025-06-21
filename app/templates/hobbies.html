@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta property="og:title" content="Hobbies - Personal Portfolio" />
+    <meta property="og:description" content="My Hobbies and Interests" />
+    <meta property="og:url" content="{{ url }}" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link lang="sass" rel="stylesheet" href="./static/styles/main.css" />
+    <link rel="icon" href="./static/img/favicon.ico" type="image/x-icon" />
+    <title>{{ title }}</title>
+  </head>
+
+  <body>
+    <header class="nav-bar">
+      <div class="nav-content">
+        <a href="/">
+          <div class="nav-logo">
+            <img src="./static/img/logo.svg" />
+          </div>
+        </a>
+        <nav class="nav-menu">
+          <!-- jinja2 loop through nav items -->
+          {% for item in nav_items %}
+          <a
+            href="{{ item.url }}"
+            class="nav-link {% if item.name == current_page %}active{% endif %}"
+          >
+            <!-- jinja2 variable interpolation -->
+            {{ item.name }}
+          </a>
+          {% endfor %}
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-header">
+      <h1>Hobbies & Interests</h1>
+    </div>
+
+    <section class="hobbies-section">
+      <div class="hobbies-content">
+        <!-- jinja2 loop through hobbies list -->
+        <div class="hobbies-grid">
+          {% for hobby in hobbies %}
+          <div class="hobby-card">
+            <div class="hobby-image-large">
+              <!-- placeholder for hobby image -->
+              <img
+                src="./static/img/{{ hobby.image_placeholder }}"
+                alt="{{ hobby.activity }}"
+                class="hobby-img-large"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="hobby-icon-large" style="display: none">
+                <div class="hobby-icon-circle">{{ hobby.hobby[0] }}</div>
+                <div class="hobby-icon-text">{{ hobby.activity }}</div>
+              </div>
+            </div>
+            <div class="hobby-content">
+              <div class="hobby-header-new">
+                <!-- jinja2 variable interpolation -->
+                <h3>{{ hobby.activity }}</h3>
+                <span class="hobby-badge">{{ hobby.duration }}</span>
+              </div>
+              <p class="hobby-category">{{ hobby.hobby }}</p>
+              <div class="hobby-description-new">
+                <p>{{ hobby.description }}</p>
+              </div>
+              <div class="hobby-highlights">
+                <h4>Highlights:</h4>
+                <div class="highlights-grid">
+                  <!-- jinja2 nested loop through hobby details -->
+                  {% for detail in hobby.details %}
+                  <div class="highlight-item">{{ detail }}</div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
