@@ -81,13 +81,82 @@ work_experiences = [
     },
 ]
 
+# Hobbies data
+hobbies = [
+    {
+        "hobby": "Music",
+        "activity": "Singing & Playing Guitar",
+        "duration": "8+ years",
+        "image_placeholder": "music-hobby.png",
+        "description": "Been singing and playing the guitar for the past 8 years! Music is my creative outlet and helps me unwind after long coding sessions.",
+        "details": [
+            "Performed at various local venues and open mic nights",
+            "Self-taught guitarist with focus on acoustic techniques",
+            "Enjoy covering songs across multiple genres from pop to hip-hop",
+            "Music theory knowledge helps with both composition and improvisation",
+        ],
+    },
+    {
+        "hobby": "Sports",
+        "activity": "Badminton",
+        "duration": "5+ years",
+        "image_placeholder": "badminton-hobby.png",
+        "description": "My favourite form of cardio! There's nothing quite like the fast-paced, strategic gameplay of badminton.",
+        "details": [
+            "Regular player at local clubs and recreational leagues",
+            "Excellent cardiovascular workout that keeps me in shape",
+            "Developed quick reflexes and strategic thinking skills",
+            "Love the combination of power, precision, and endurance required",
+        ],
+    },
+    {
+        "hobby": "Magic",
+        "activity": "Magic Tricks",
+        "duration": "3+ years",
+        "image_placeholder": "magic-hobby.png",
+        "description": "Practicing magic tricks with David Blaine as my idol. The art of illusion fascinates me and parallels problem-solving in programming.",
+        "details": [
+            "Specialize in close-up magic and card tricks",
+            "Performed for friends, family, and small gatherings",
+            "Study the psychology behind misdirection and audience engagement",
+            "Appreciate the precision and practice required to master each trick",
+        ],
+    },
+    {
+        "hobby": "Winter Sports",
+        "activity": "Skiing",
+        "duration": "6+ years",
+        "image_placeholder": "skiing-hobby.png",
+        "description": "Blue Mountain is my favorite ski resort! Nothing beats the thrill of carving down fresh powder on a crisp winter day.",
+        "details": [
+            "Intermediate to advanced level skier with experience on various terrains",
+            "Blue Mountain in Ontario is my go-to destination for weekend trips",
+            "Enjoy both groomed runs and off-piste adventures",
+            "Winter sports help me stay active during the colder months",
+        ],
+    },
+    {
+        "hobby": "Puzzles",
+        "activity": "Speedsolving Rubik's Cube",
+        "duration": "4+ years",
+        "image_placeholder": "rubiks-hobby.png",
+        "description": "Can solve the Rubik's cube in under 20 seconds! The logical patterns and algorithms appeal to my programming mindset.",
+        "details": [
+            "Personal best time of under 20 seconds using CFOP method",
+            "Memorized over 50 different algorithms for various cube states",
+            "Enjoy the mathematical precision and pattern recognition involved",
+            "Regularly practice to maintain speed and explore new solving methods",
+        ],
+    },
+]
+
 # navigation menu items
 nav_items = [
     {"name": "Home", "url": "/"},
     {"name": "Work Experience", "url": "/work-experience"},
+    {"name": "Hobbies", "url": "/hobbies"},
     # future items will be added here:
     # {"name": "Education", "url": "/education"},
-    # {"name": "Hobbies", "url": "/hobbies"},
     # {"name": "Countries Visited", "url": "/countries"},
 ]
 
@@ -123,5 +192,18 @@ def work_experience():
         work_experiences=work_experiences,
         nav_items=nav_items,
         current_page="Work Experience",
+    )
+    return html_content
+
+
+@app.route("/hobbies")
+def hobbies_page():
+    # use jinja to render template
+    html_content = render_jinja_template(
+        "hobbies.html",
+        title="Hobbies - Krish Chopra",
+        hobbies=hobbies,
+        nav_items=nav_items,
+        current_page="Hobbies",
     )
     return html_content
