@@ -30,6 +30,18 @@
             <img src="./static/img/logo.svg" />
           </div>
         </a>
+        <nav class="nav-menu">
+          <!-- jinja2 loop through nav items -->
+          {% for item in nav_items %}
+          <a
+            href="{{ item.url }}"
+            class="nav-link {% if item.name == current_page %}active{% endif %}"
+          >
+            <!-- jinja2 variable interpolation -->
+            {{ item.name }}
+          </a>
+          {% endfor %}
+        </nav>
       </div>
     </header>
 

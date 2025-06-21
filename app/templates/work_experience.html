@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta property="og:title" content="Work Experience - Personal Portfolio" />
+    <meta property="og:description" content="My Work Experience" />
+    <meta property="og:url" content="{{ url }}" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link lang="sass" rel="stylesheet" href="./static/styles/main.css" />
+    <link rel="icon" href="./static/img/favicon.ico" type="image/x-icon" />
+    <title>{{ title }}</title>
+  </head>
+
+  <body>
+    <header class="nav-bar">
+      <div class="nav-content">
+        <a href="/">
+          <div class="nav-logo">
+            <img src="./static/img/logo.svg" />
+          </div>
+        </a>
+        <nav class="nav-menu">
+          {% for item in nav_items %}
+          <a
+            href="{{ item.url }}"
+            class="nav-link {% if item.name == current_page %}active{% endif %}"
+          >
+            {{ item.name }}
+          </a>
+          {% endfor %}
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-header">
+      <h1>Work Experience</h1>
+    </div>
+
+    <section class="work-experience">
+      <div class="work-content">
+        <!-- jinja2 loop through work experiences list -->
+        {% for experience in work_experiences %}
+        <div class="experience-item">
+          <div class="experience-header">
+            <div class="company-logo">
+              <!-- placeholder for company logo -->
+              {% if experience.company_url %}
+              <a
+                href="{{ experience.company_url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="company-link"
+              >
+                {% endif %} {% if experience.logo_placeholder and
+                experience.logo_placeholder != '' %}
+                <img
+                  src="./static/img/{{ experience.logo_placeholder }}"
+                  alt="{{ experience.company }} Logo"
+                  class="company-logo-img"
+                />
+                {% else %}
+                <div class="logo-placeholder">{{ experience.company[0] }}</div>
+                {% endif %} {% if experience.company_url %}
+              </a>
+              {% endif %}
+            </div>
+            <div class="experience-details">
+              <!-- jinja2 variable interpolation -->
+              {% if experience.company_url %}
+              <h3>
+                <a
+                  href="{{ experience.company_url }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="company-name-link"
+                  >{{ experience.company }}</a
+                >
+              </h3>
+              {% else %}
+              <h3>{{ experience.company }}</h3>
+              {% endif %}
+              <h4>{{ experience.position }}</h4>
+              <p class="location-duration">
+                {{ experience.location }} | {{ experience.duration }}
+              </p>
+            </div>
+          </div>
+          <div class="experience-achievements">
+            <ul>
+              <!-- jinja2 nested loop through achievements list -->
+              {% for achievement in experience.achievements %}
+              <li>{{ achievement|safe }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </body>
+</html>
