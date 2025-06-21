@@ -27,6 +27,15 @@ body {
   padding-top: 10px;
 }
 
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .nav-content .logo-touch-target {
   display: inline-flex;
   height: 60%;
@@ -46,6 +55,32 @@ body {
 
 .nav-logo img {
   width: 200px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: 700;
 }
 
 .nav-content nav {
@@ -144,4 +179,173 @@ body {
 
 .about-content a:hover {
   text-decoration: underline;
+}
+
+/* Page Header Styles */
+.page-header {
+  background-color: #1d539f;
+  text-align: center;
+  padding: 60px 0;
+  margin-bottom: 0;
+}
+
+.page-header h1 {
+  font-size: 50px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+/* Work Experience Styles */
+.work-experience {
+  background-color: white;
+  padding: 60px 0;
+}
+
+.work-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.experience-item {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.experience-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.company-logo {
+  flex-shrink: 0;
+}
+
+.logo-placeholder {
+  width: 60px;
+  height: 60px;
+  background-color: #1d539f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.company-logo-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e0e0e0;
+  background-color: white;
+  padding: 2px;
+}
+
+.company-link {
+  display: block;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.company-link:hover {
+  transform: scale(1.05);
+}
+
+.company-name-link {
+  color: #1d539f;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.company-name-link:hover {
+  color: #0f3a70;
+  text-decoration: underline;
+}
+
+.experience-details h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1d539f;
+  margin: 0 0 5px 0;
+}
+
+.experience-details h4 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.location-duration {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  font-style: italic;
+}
+
+.experience-achievements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-achievements li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.experience-achievements li:before {
+  content: "●";
+  color: #1d539f;
+  position: absolute;
+  left: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-content {
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .nav-menu {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .experience-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .page-header h1 {
+    font-size: 36px;
+  }
 }
