@@ -223,14 +223,222 @@ education = [
     },
 ]
 
-# navigation menu items
+# travel/map data
+travel_data = {
+    "visited_places": [
+        # Canada
+        {
+            "name": "Toronto",
+            "country": "Canada",
+            "lat": 43.6532,
+            "lng": -79.3832,
+            "flag": "🇨🇦",
+            "description": "Canada's largest city and financial center",
+        },
+        {
+            "name": "Vaughan",
+            "country": "Canada",
+            "lat": 43.8361,
+            "lng": -79.4985,
+            "flag": "🇨🇦",
+            "description": "Suburban city north of Toronto",
+        },
+        {
+            "name": "Niagara Falls",
+            "country": "Canada",
+            "lat": 43.0896,
+            "lng": -79.0849,
+            "flag": "🇨🇦",
+            "description": "Famous waterfall on US-Canada border",
+        },
+        {
+            "name": "Waterloo",
+            "country": "Canada",
+            "lat": 43.4643,
+            "lng": -80.5204,
+            "flag": "🇨🇦",
+            "description": "University town, home to University of Waterloo",
+        },
+        # United States
+        {
+            "name": "Denver",
+            "country": "United States",
+            "lat": 39.7392,
+            "lng": -104.9903,
+            "flag": "🇺🇸",
+            "description": "Mile High City, Colorado's capital",
+        },
+        {
+            "name": "Salt Lake City",
+            "country": "United States",
+            "lat": 40.7608,
+            "lng": -111.8910,
+            "flag": "🇺🇸",
+            "description": "Utah's capital, near the Great Salt Lake",
+        },
+        {
+            "name": "Las Vegas",
+            "country": "United States",
+            "lat": 36.1699,
+            "lng": -115.1398,
+            "flag": "🇺🇸",
+            "description": "Entertainment capital of the world",
+        },
+        {
+            "name": "Chicago",
+            "country": "United States",
+            "lat": 41.8781,
+            "lng": -87.6298,
+            "flag": "🇺🇸",
+            "description": "Windy City, Illinois' largest city",
+        },
+        {
+            "name": "New York City",
+            "country": "United States",
+            "lat": 40.7128,
+            "lng": -74.0060,
+            "flag": "🇺🇸",
+            "description": "The Big Apple, most populous US city",
+        },
+        {
+            "name": "St. Louis",
+            "country": "United States",
+            "lat": 38.6270,
+            "lng": -90.1994,
+            "flag": "🇺🇸",
+            "description": "Gateway to the West, Missouri",
+        },
+        {
+            "name": "San Francisco",
+            "country": "United States",
+            "lat": 37.7749,
+            "lng": -122.4194,
+            "flag": "🇺🇸",
+            "description": "Golden Gate City, California",
+        },
+        {
+            "name": "Los Angeles",
+            "country": "United States",
+            "lat": 34.0522,
+            "lng": -118.2437,
+            "flag": "🇺🇸",
+            "description": "City of Angels, California",
+        },
+        # Cuba
+        {
+            "name": "Varadero",
+            "country": "Cuba",
+            "lat": 23.1540,
+            "lng": -81.2520,
+            "flag": "🇨🇺",
+            "description": "Beautiful beach resort town",
+        },
+        # India
+        {
+            "name": "New Delhi",
+            "country": "India",
+            "lat": 28.6139,
+            "lng": 77.2090,
+            "flag": "🇮🇳",
+            "description": "Capital of India",
+        },
+        {
+            "name": "Chandigarh",
+            "country": "India",
+            "lat": 30.7333,
+            "lng": 76.7794,
+            "flag": "🇮🇳",
+            "description": "Planned city, capital of Punjab and Haryana",
+        },
+        {
+            "name": "Agra",
+            "country": "India",
+            "lat": 27.1767,
+            "lng": 78.0081,
+            "flag": "🇮🇳",
+            "description": "Home to the iconic Taj Mahal",
+        },
+        # Mexico
+        {
+            "name": "Cancun",
+            "country": "Mexico",
+            "lat": 21.1619,
+            "lng": -86.8515,
+            "flag": "🇲🇽",
+            "description": "Popular beach destination on Caribbean coast",
+        },
+        # Switzerland
+        {
+            "name": "Interlaken",
+            "country": "Switzerland",
+            "lat": 46.6863,
+            "lng": 7.8632,
+            "flag": "🇨🇭",
+            "description": "Alpine resort town between two lakes",
+        },
+        {
+            "name": "Geneva",
+            "country": "Switzerland",
+            "lat": 46.2044,
+            "lng": 6.1432,
+            "flag": "🇨🇭",
+            "description": "International city, home to UN offices",
+        },
+        # France
+        {
+            "name": "Paris",
+            "country": "France",
+            "lat": 48.8566,
+            "lng": 2.3522,
+            "flag": "🇫🇷",
+            "description": "City of Light, capital of France",
+        },
+        {
+            "name": "Versailles",
+            "country": "France",
+            "lat": 48.8014,
+            "lng": 2.1301,
+            "flag": "🇫🇷",
+            "description": "Historic royal residence near Paris",
+        },
+        # Czech Republic
+        {
+            "name": "Prague",
+            "country": "Czech Republic",
+            "lat": 50.0755,
+            "lng": 14.4378,
+            "flag": "🇨🇿",
+            "description": "Golden City, capital of Czech Republic",
+        },
+        # Germany
+        {
+            "name": "Frankfurt",
+            "country": "Germany",
+            "lat": 50.1109,
+            "lng": 8.6821,
+            "flag": "🇩🇪",
+            "description": "Financial center of Germany",
+        },
+    ],
+    "countries_visited": [
+        {"name": "Canada", "flag": "🇨🇦", "cities_count": 4},
+        {"name": "United States", "flag": "🇺🇸", "cities_count": 8},
+        {"name": "Cuba", "flag": "🇨🇺", "cities_count": 1},
+        {"name": "India", "flag": "🇮🇳", "cities_count": 3},
+        {"name": "Mexico", "flag": "🇲🇽", "cities_count": 1},
+        {"name": "Switzerland", "flag": "🇨🇭", "cities_count": 2},
+        {"name": "France", "flag": "🇫🇷", "cities_count": 2},
+        {"name": "Czech Republic", "flag": "🇨🇿", "cities_count": 1},
+        {"name": "Germany", "flag": "🇩🇪", "cities_count": 1},
+    ],
+}
+
 nav_items = [
     {"name": "Home", "url": "/"},
     {"name": "Work Experience", "url": "/work-experience"},
     {"name": "Education", "url": "/education"},
     {"name": "Hobbies", "url": "/hobbies"},
-    # future items will be added here
-    # {"name": "Countries Visited", "url": "/countries"},
+    {"name": "Map", "url": "/map"},
 ]
 
 
@@ -291,5 +499,18 @@ def education_page():
         education=education,
         nav_items=nav_items,
         current_page="Education",
+    )
+    return html_content
+
+
+@app.route("/map")
+def map_page():
+    # use jinja to render template
+    html_content = render_jinja_template(
+        "map.html",
+        title="Travel Map - Krish Chopra",
+        travel_data=travel_data,
+        nav_items=nav_items,
+        current_page="Map",
     )
     return html_content
