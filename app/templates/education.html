@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta property="og:title" content="Education - Personal Portfolio" />
+    <meta property="og:description" content="My Educational Background" />
+    <meta property="og:url" content="{{ url }}" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link lang="sass" rel="stylesheet" href="./static/styles/main.css" />
+    <link rel="icon" href="./static/img/favicon.ico" type="image/x-icon" />
+    <title>{{ title }}</title>
+  </head>
+
+  <body>
+    <header class="nav-bar">
+      <div class="nav-content">
+        <a href="/">
+          <div class="nav-logo">
+            <img src="./static/img/logo.svg" />
+          </div>
+        </a>
+        <nav class="nav-menu">
+          <!-- jinja2 loop through nav items -->
+          {% for item in nav_items %}
+          <a
+            href="{{ item.url }}"
+            class="nav-link {% if item.name == current_page %}active{% endif %}"
+          >
+            <!-- jinja2 variable interpolation -->
+            {{ item.name }}
+          </a>
+          {% endfor %}
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-header">
+      <h1>Education</h1>
+    </div>
+
+    <section class="education-section">
+      <div class="education-content">
+        <div class="education-timeline">
+          <!-- jinja2 loop through education list -->
+          {% for edu in education %}
+          <div class="education-item">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+              {% if not loop.last %}
+              <div class="timeline-line"></div>
+              {% endif %}
+            </div>
+
+            <div class="education-card">
+              <div class="education-header">
+                <div class="institution-logo">
+                  <!-- placeholder for institution logo -->
+                  {% if edu.institution_url %}
+                  <a
+                    href="{{ edu.institution_url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="institution-link"
+                  >
+                    {% endif %}
+
+                    <img
+                      src="./static/img/{{ edu.logo_placeholder }}"
+                      alt="{{ edu.institution }} Logo"
+                      class="institution-logo-img"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    />
+                    <div class="logo-placeholder-edu" style="display: none">
+                      {{ edu.institution[0] }}
+                    </div>
+
+                    {% if edu.institution_url %}
+                  </a>
+                  {% endif %}
+                </div>
+
+                <div class="education-details">
+                  <div class="institution-info">
+                    <!-- jinja2 variable interpolation -->
+                    {% if edu.institution_url %}
+                    <h3>
+                      <a
+                        href="{{ edu.institution_url }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="institution-name-link"
+                        >{{ edu.institution }}</a
+                      >
+                    </h3>
+                    {% else %}
+                    <h3>{{ edu.institution }}</h3>
+                    {% endif %}
+                    <h4>
+                      {{ edu.degree }}{% if edu.specialization %} - {{
+                      edu.specialization }}{% endif %}
+                    </h4>
+                    <div class="duration-status">
+                      <span class="duration">{{ edu.duration }}</span>
+                      <span class="status-badge status-{{ edu.status.lower() }}"
+                        >{{ edu.status }}</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {% if edu.grade %}
+              <div class="academic-performance">
+                <h4>Academic Performance</h4>
+                <p class="grade-info">{{ edu.grade }}</p>
+              </div>
+              {% endif %} {% if edu.subjects %}
+              <div class="subjects-section">
+                <h4>Subjects</h4>
+                {% for level, subject_list in edu.subjects.items() %}
+                <div class="subject-group">
+                  <h5>{{ level }}:</h5>
+                  <div class="subject-tags">
+                    {% for subject in subject_list %}
+                    <span class="subject-tag">{{ subject }}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              {% endif %} {% if edu.activities %}
+              <div class="activities-section">
+                <h4>Activities & Societies</h4>
+                <div class="activities-grid">
+                  <!-- jinja2 nested loop through activities -->
+                  {% for activity in edu.activities %}
+                  <div class="activity-item">{{ activity }}</div>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %} {% if edu.achievements %}
+              <div class="achievements-section">
+                <h4>Awards & Achievements</h4>
+                <ul class="achievements-list">
+                  <!-- jinja2 nested loop through achievements -->
+                  {% for achievement in edu.achievements %}
+                  <li class="achievement-item">{{ achievement }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

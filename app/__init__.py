@@ -142,10 +142,83 @@ hobbies = [
         "image_placeholder": "rubiks-hobby.png",
         "description": "Can solve the Rubik's cube in under 20 seconds! The logical patterns and algorithms appeal to my programming mindset.",
         "details": [
-            "Personal best time of under 20 seconds using CFOP method",
+            "Personal best time of 17.26 seconds using CFOP method",
             "Memorized over 50 different algorithms for various cube states",
             "Enjoy the mathematical precision and pattern recognition involved",
             "Regularly practice to maintain speed and explore new solving methods",
+        ],
+    },
+]
+
+# Education data
+education = [
+    {
+        "institution": "University of Waterloo",
+        "degree": "Bachelor of Computer Science (BCS)",
+        "specialization": "Artificial Intelligence & Business Specialization",
+        "duration": "2023 - 2027",
+        "logo_placeholder": "waterloo-logo.png",
+        "institution_url": "https://uwaterloo.ca/",
+        "grade": "GPA: 3.7/4.0",
+        "status": "Current",
+        "activities": [
+            "Data Science Club",
+            "Wat Street",
+            "Waterloo Blockchain",
+            "WATonomous",
+            "Math Faculty Orientation Leader",
+            "Computer Science Club",
+            "Tech+ UW",
+            "Badminton Club",
+            "Intramural Volleyball",
+        ],
+        "achievements": [
+            "Faculty of Mathematics National Scholarship ($25,000)",
+            "University of Waterloo Alumni Scholarship ($8,000)",
+            "University of Waterloo President's Scholarship of Distinction ($2,000)",
+        ],
+    },
+    {
+        "institution": "International Baccalaureate",
+        "degree": "IB Diploma",
+        "specialization": "",
+        "duration": "2021 - 2023",
+        "logo_placeholder": "ib-logo.png",
+        "institution_url": "https://www.ibo.org/",
+        "status": "Completed",
+        "grade": "IB Score: 40/45 points",
+        "subjects": {
+            "Higher Level (HL)": ["English A Literature", "Economics", "Chemistry"],
+            "Standard Level (SL)": ["Mathematics A&A", "Physics", "French B"],
+            "Other Credits": ["Theory of Knowledge (Philosophy)"],
+        },
+        "activities": [],
+        "achievements": [],
+    },
+    {
+        "institution": "Bayview Secondary School",
+        "degree": "Ontario Secondary School Diploma (OSSD)",
+        "specialization": "",
+        "duration": "2019 - 2023",
+        "logo_placeholder": "bayview-logo.jpeg",
+        "institution_url": "http://www.yrdsb.ca/schools/bayview.ss/Pages/default.aspx",
+        "status": "Completed",
+        "grade": "Grade 12 Top 6 Course Average: 99.2%",
+        "activities": [
+            "Bayview Entrepreneurs (President)",
+            "DECA (Trainer, Junior Representative, and Competitor)",
+            "Wharton Global Investment Competition (Team Member)",
+            "FBLA (Lead Marketing Trainer and Competitor)",
+            "Debate Club (Junior Executive)",
+            "Public Speaking Club",
+            "Mathematics Club",
+            "Badminton Team",
+            "Tennis Team",
+        ],
+        "achievements": [
+            "Recipient of IB Economics Subject Award",
+            "Academic Honour Roll achieved for all enrolled semesters of school (Grade 9-12)",
+            "Ontario Scholar Award recipient",
         ],
     },
 ]
@@ -154,9 +227,9 @@ hobbies = [
 nav_items = [
     {"name": "Home", "url": "/"},
     {"name": "Work Experience", "url": "/work-experience"},
+    {"name": "Education", "url": "/education"},
     {"name": "Hobbies", "url": "/hobbies"},
-    # future items will be added here:
-    # {"name": "Education", "url": "/education"},
+    # future items will be added here
     # {"name": "Countries Visited", "url": "/countries"},
 ]
 
@@ -205,5 +278,18 @@ def hobbies_page():
         hobbies=hobbies,
         nav_items=nav_items,
         current_page="Hobbies",
+    )
+    return html_content
+
+
+@app.route("/education")
+def education_page():
+    # use jinja to render template
+    html_content = render_jinja_template(
+        "education.html",
+        title="Education - Krish Chopra",
+        education=education,
+        nav_items=nav_items,
+        current_page="Education",
     )
     return html_content
