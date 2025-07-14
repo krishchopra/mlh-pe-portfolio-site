@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta property="og:title" content="Timeline - Personal Portfolio" />
+    <meta property="og:description" content="Timeline Posts" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link lang="sass" rel="stylesheet" href="./static/styles/main.css" />
+    <link rel="icon" href="./static/img/favicon.ico" type="image/x-icon" />
+    <title>{{ title }}</title>
+
+    <!-- md5 library for gravatar -->
+    <script src="https://cdn.jsdelivr.net/npm/js-md5@0.7.3/build/md5.min.js"></script>
+
+    <style>
+      .timeline-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px 20px 20px;
+        font-family: "Roboto", sans-serif;
+      }
+
+      .post-form {
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #333;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e9ecef;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-family: "Roboto", sans-serif;
+        transition: border-color 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .submit-btn {
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+      }
+
+      .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .timeline-posts {
+        margin-top: 40px;
+      }
+
+      .timeline-posts h2 {
+        color: #333;
+        font-size: 2rem;
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .post {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 25px;
+        border-left: 4px solid #007bff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .post:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .post-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .post-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 15px;
+        border: 3px solid #e9ecef;
+      }
+
+      .post-info {
+        flex: 1;
+      }
+
+      .post-name {
+        font-weight: 600;
+        color: #333;
+        font-size: 1.1rem;
+        margin-bottom: 2px;
+      }
+
+      .post-date {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .post-content {
+        color: #444;
+        line-height: 1.6;
+        font-size: 1rem;
+        margin-left: 65px;
+      }
+
+      .loading {
+        text-align: center;
+        padding: 20px;
+        color: #666;
+      }
+
+      .error {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        border: 1px solid #f1b0b7;
+      }
+
+      .success {
+        background: #d4edda;
+        color: #155724;
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        border: 1px solid #c3e6cb;
+      }
+
+      .no-posts {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        padding: 40px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="nav-bar">
+      <div class="nav-content">
+        <a href="/">
+          <div class="nav-logo">
+            <img src="./static/img/logo.svg" />
+          </div>
+        </a>
+        <nav class="nav-menu">
+          <!-- jinja2 loop through nav items -->
+          {% for item in nav_items %}
+          <a
+            href="{{ item.url }}"
+            class="nav-link {% if item.name == current_page %}active{% endif %}"
+          >
+            <!-- jinja2 variable interpolation -->
+            {{ item.name }}
+          </a>
+          {% endfor %}
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-header">
+      <h1>Timeline</h1>
+      <p class="page-subtitle">
+        Share your thoughts and see what others are saying!
+      </p>
+    </div>
+
+    <div class="timeline-container">
+      <!-- post creation form -->
+      <div class="post-form">
+        <form id="timeline-form">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Enter your name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Enter your email address"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="content">What's on your mind?</label>
+            <textarea
+              id="content"
+              name="content"
+              required
+              placeholder="Share your thoughts..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submit-btn">
+            Share Post
+          </button>
+        </form>
+      </div>
+
+      <!-- message display -->
+      <div id="message-container"></div>
+
+      <!-- timeline posts display -->
+      <div class="timeline-posts">
+        <h2>Recent Posts</h2>
+        <div id="posts-container">
+          <div class="loading">Loading posts...</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // get gravatar url from email
+      function getGravatarUrl(email) {
+        const hash = md5(email.trim().toLowerCase());
+        return `https://www.gravatar.com/avatar/${hash}?s=50&d=identicon`;
+      }
+
+      // format date to readable format
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diff = now - date;
+        const minutes = Math.floor(diff / (1000 * 60));
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+        if (minutes < 1) return "Just now";
+        if (minutes < 60) return `${minutes} minutes ago`;
+        if (hours < 24) return `${hours} hours ago`;
+        if (days < 7) return `${days} days ago`;
+
+        return date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        });
+      }
+
+      // show message to user
+      function showMessage(message, type = "success") {
+        const messageContainer = document.getElementById("message-container");
+        messageContainer.innerHTML = `<div class="${type}">${message}</div>`;
+        setTimeout(() => {
+          messageContainer.innerHTML = "";
+        }, 5000);
+      }
+
+      // load and display timeline posts
+      async function loadPosts() {
+        try {
+          const response = await fetch("/api/timeline_post");
+          const data = await response.json();
+
+          const postsContainer = document.getElementById("posts-container");
+
+          if (data.timeline_posts && data.timeline_posts.length > 0) {
+            postsContainer.innerHTML = data.timeline_posts
+              .map(
+                (post) => `
+              <div class="post">
+                <div class="post-header">
+                  <img class="post-avatar" src="${getGravatarUrl(
+                    post.email
+                  )}" alt="Avatar">
+                  <div class="post-info">
+                    <div class="post-name">${post.name}</div>
+                    <div class="post-date">${formatDate(post.created_at)}</div>
+                  </div>
+                </div>
+                <div class="post-content">${post.content}</div>
+              </div>
+            `
+              )
+              .join("");
+          } else {
+            postsContainer.innerHTML =
+              '<div class="no-posts">No posts yet. Be the first to share something!</div>';
+          }
+        } catch (error) {
+          console.error("Error loading posts:", error);
+          document.getElementById("posts-container").innerHTML =
+            '<div class="error">Error loading posts. Please try again.</div>';
+        }
+      }
+
+      // handle form submission
+      document
+        .getElementById("timeline-form")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const submitBtn = document.getElementById("submit-btn");
+          const originalText = submitBtn.textContent;
+
+          // disable button and show loading state
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Posting...";
+
+          try {
+            const formData = new FormData(this);
+
+            const response = await fetch("/api/timeline_post", {
+              method: "POST",
+              body: formData,
+            });
+
+            if (response.ok) {
+              const newPost = await response.json();
+              showMessage("Post created successfully!", "success");
+              this.reset();
+              await loadPosts();
+            } else {
+              throw new Error("Failed to create post");
+            }
+          } catch (error) {
+            console.error("Error creating post:", error);
+            showMessage("Error creating post. Please try again.", "error");
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          }
+        });
+
+      // load posts when page loads
+      document.addEventListener("DOMContentLoaded", loadPosts);
+    </script>
+  </body>
+</html>

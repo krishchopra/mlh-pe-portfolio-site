@@ -467,6 +467,7 @@ nav_items = [
     {"name": "Education", "url": "/education"},
     {"name": "Hobbies", "url": "/hobbies"},
     {"name": "Map", "url": "/map"},
+    {"name": "Timeline", "url": "/timeline"},
 ]
 
 
@@ -540,6 +541,18 @@ def map_page():
         travel_data=travel_data,
         nav_items=nav_items,
         current_page="Map",
+    )
+    return html_content
+
+
+@app.route("/timeline")
+def timeline():
+    # use jinja to render template
+    html_content = render_jinja_template(
+        "timeline.html",
+        title="Timeline - Krish Chopra",
+        nav_items=nav_items,
+        current_page="Timeline",
     )
     return html_content
 
