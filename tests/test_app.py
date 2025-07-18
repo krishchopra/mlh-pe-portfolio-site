@@ -73,6 +73,12 @@ class AppTestCase(unittest.TestCase):
     # note: cannot test HTML results without executing Node.js code
     # as timeline posts are rendered on the client
 
+  """
+  Tests the timeline API endpoint for malformed requests:
+  1. POST request with missing name
+  2. POST request with missing content
+  3. POST request with missing email
+  """
   def test_malformed_timeline_post(self):
     # POST missing name
     response = self.client.post('/api/timeline_post', data={
