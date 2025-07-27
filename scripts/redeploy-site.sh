@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# redeploy-site.sh — pull latest code, reinstall deps, restart Flask using systemd service
+# redeploy-site.sh — pull latest code, rebuild containers, restart using Docker Compose
 
 set -euo pipefail
 
@@ -9,11 +9,9 @@ cd /root/mlh-pe-portfolio-site
 git fetch origin
 git reset --hard origin/main
 
-source python3-virtualenv/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt
+docker compose -f docker-compose.prod.yml down
 
-sudo systemctl restart myportfolio
+docker compose -f docker-compose.prod.yml up -d --build
 
-echo "🚀 Redeploy complete! Flask is running as systemd service."
-echo "🔗 Check status with: sudo systemctl status myportfolio"
+echo "🚀 Redeploy complete! Application is running in Docker containers."
+echo "🔗 Check status with: docker compose -f docker-compose.prod.yml ps"
