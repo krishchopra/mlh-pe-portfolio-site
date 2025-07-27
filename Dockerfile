@@ -2,7 +2,7 @@ FROM quay.io/centos/centos:stream9
 
 RUN dnf install -y python3.9 python3-pip
 
-WORKDIR /myportfolio
+WORKDIR /mlh-pe-portfolio-site
 
 COPY . .
 
