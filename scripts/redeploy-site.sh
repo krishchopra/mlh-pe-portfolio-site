@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#
 # redeploy-site.sh — pull latest code, rebuild containers, restart using Docker Compose
 
 set -euo pipefail
