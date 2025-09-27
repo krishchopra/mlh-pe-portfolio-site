@@ -1,4 +1,4 @@
-# My Personal Portfolio Site (2025 MLH x Meta PE Fellowship)
+# My Personal Portfolio Site (2025 MLH/Meta PE Fellowship)
 
 Welcome to my personal portfolio website! I built this Flask-based portfolio during my MLH x Meta Production Engineering Fellowship to showcase my work, education, and interests. This site serves as a comprehensive overview of who I am and what I've accomplished.
 
