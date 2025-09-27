@@ -1,6 +1,6 @@
-# My Personal Portfolio Site (MLH PE Fellowship)
+# My Personal Portfolio Site (2025 MLH x Meta PE Fellowship)
 
-Welcome to my personal portfolio website! I built this Flask-based portfolio during my MLH Production Engineering Fellowship to showcase my work, education, and interests. This site serves as a comprehensive overview of who I am and what I've accomplished.
+Welcome to my personal portfolio website! I built this Flask-based portfolio during my MLH x Meta Production Engineering Fellowship to showcase my work, education, and interests. This site serves as a comprehensive overview of who I am and what I've accomplished.
 
 ## What I've Built
 
@@ -67,7 +67,7 @@ You should get a response like this in the terminal:
 
 You'll now be able to access the website at `localhost:5000` or `127.0.0.1:5000` in the browser!
 
-_Note: The site will only be accessible on your local machine while the Flask server is running. I'm planning to redeploy it to the cloud soon! (was previously deployed to DigitalOcean VPS during the MLH PE Fellowship)_
+_Note: The site will only be accessible on your local machine while the Flask server is running. I'm planning to redeploy it to the cloud soon! (was previously deployed to DigitalOcean VPS during the MLH x Meta Fellowship)_
 
 ## About This Project
 
