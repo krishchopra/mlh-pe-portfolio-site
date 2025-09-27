@@ -26,7 +26,7 @@ I've created a dynamic portfolio site that includes multiple pages and features 
 
 ## Getting Started
 
-My DigitalOcean VPS is currently spun down, but want to run my portfolio locally? Here's how to get it up and running on your machine.
+My DigitalOcean VPS is currently spun down since the fellowship ended, but want to run my portfolio locally? Here's how to get it up and running on your machine.
 
 ## Installation
 
