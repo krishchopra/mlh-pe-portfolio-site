@@ -1,44 +1,37 @@
-# Production Engineering - Week 1 - Portfolio Site
+# My Personal Portfolio Site (MLH PE Fellowship)
 
-Welcome to the MLH Fellowship! During Week 1, you'll be using Flask to build a portfolio site. This site will be the foundation for activities we do in future weeks so spend time this week making it your own and reflect your personality!
+Welcome to my personal portfolio website! I built this Flask-based portfolio during my MLH Production Engineering Fellowship to showcase my work, education, and interests. This site serves as a comprehensive overview of who I am and what I've accomplished.
 
-## Tasks
+## What I've Built
 
-Once you've got your portfolio downloaded and running using the instructions below, you should attempt to complete the following tasks.
+I've created a dynamic portfolio site that includes multiple pages and features to tell my story. Here's what I've implemented:
 
-For each of these tasks, you should create an [Issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) and work on them in a new [branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches). When the task has been completed, you should open a [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) and get another fellow in your pod to give you feedback before merging it in.
+### Portfolio Features
 
-*Note: Make sure to include a link to the Issue you're progressing on inside of your Pull Request so your reviewer knows what you're progressing on!*
+- [x] Personal photo and introduction
+- [x] Detailed "About Me" section
+- [x] Professional work experience showcase
+- [x] Hobbies and interests with images
+- [x] Educational background
+- [x] Interactive map of places I've visited
 
-### GitHub Tasks
-- [x] Create Issues for each task below
-- [x] Progress on each task in a new branch
-- [x] Open a Pull Request when a task is finished to get feedback
+### Technical Implementation
 
-### Portfolio Tasks
-- [x] 1. Add a photo of yourself to the website
-- [x] 2. Add an "About Yourself" section to the website.
-- [x] 3. Add your previous work experiences
-- [x] 4. Add your hobbies (including images)
-- [x] 5. Add your current/previous education
-- [x] 6. Add a map of all the cool locations/countries you visited
-
-### Flask Tasks
-- [x] Get your Flask app running locally on your machine using the instructions below.
-- [x] Add a template for adding multiple work experiences/education/hobbies using [Jinja](https://jinja.palletsprojects.com/en/3.0.x/api/#basics)
-- [x] Create a new page to display hobbies.
-- [x] Add a menu bar that dynamically displays other pages in the app
-
+- [x] Flask web application with multiple routes
+- [x] Jinja templating for dynamic content rendering
+- [x] Timeline page with posts/comments, MySQL database integration, and API endpoints
+- [x] Dedicated hobbies page with image galleries
+- [x] Responsive navigation menu
+- [x] Clean, modern styling with CSS
 
 ## Getting Started
 
-You need to do all your progress here.
+My DigitalOcean VPS is currently spun down, but want to run my portfolio locally? Here's how to get it up and running on your machine.
 
 ## Installation
 
-Make sure you have python3 and pip installed
+First, make sure you have Python 3 and pip installed on your system. I recommend creating a virtual environment to keep dependencies organized:
 
-Create and activate virtual environment using virtualenv
 ```bash
 $ python -m venv python3-virtualenv
 $ source python3-virtualenv/bin/activate
@@ -50,17 +43,21 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install all dep
 pip install -r requirements.txt
 ```
 
-## Usage
+## Running the Portfolio
 
-Create a .env file using the example.env template (make a copy using the variables inside of the template)
+To run my portfolio locally, you'll need to set up the environment:
 
-Start flask development server
+1. Create a `.env` file using the `example.env` template (copy the variables from the template)
+
+2. Start the Flask development server:
+
 ```bash
 $ export FLASK_ENV=development
 $ flask run
 ```
 
 You should get a response like this in the terminal:
+
 ```
 ❯ flask run
  * Environment: development
@@ -68,12 +65,12 @@ You should get a response like this in the terminal:
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
-You'll now be able to access the website at `localhost:5000` or `127.0.0.1:5000` in the browser! 
+You'll now be able to access the website at `localhost:5000` or `127.0.0.1:5000` in the browser!
 
-*Note: The portfolio site will only work on your local machine while you have it running inside of your terminal. We'll go through how to host it in the cloud in the next few weeks!* 
+_Note: The site will only be accessible on your local machine while the Flask server is running. I'm planning to redeploy it to the cloud soon! (was previously deployed to DigitalOcean VPS during the MLH PE Fellowship)_
 
-## Contributing
+## About This Project
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+This portfolio represents my journey in web development and showcases my technical skills. I built it using Flask, HTML templates, and CSS to create a responsive and interactive experience. Feel free to explore the code and see how I've structured the application.
 
-Please make sure to update tests as appropriate.
+If you have any questions about the implementation or would like to contribute improvements, I'd love to hear from you!
